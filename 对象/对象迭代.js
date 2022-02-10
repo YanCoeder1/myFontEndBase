@@ -8,6 +8,8 @@ let obj = {
   a: 12,
   b: 20
 }
+
+//通过定义原型上的属性
 Object.defineProperty(obj, Symbol.iterator, {
   writable: true,
   configurable: true,
@@ -26,6 +28,24 @@ Object.defineProperty(obj, Symbol.iterator, {
     }
   }
 })
+
+//直接在对象上定义可迭代的 Symbol.iterator
+function control(x) {
+  if (x == 3) throw new Error("break");
+}
+function foo(x = 6) {
+  return {
+    next: () => {
+      control(x);
+      return {done: !x, value: x && x--};
+    }
+  }
+}
+let x = new Object;
+x[Symbol.iterator] = foo;
+for (let i of x) console.log(i);
+
+
 //手动调用
 // let test = obj[Symbol.iterator]();
 // console.log(test);
@@ -36,7 +56,7 @@ Object.defineProperty(obj, Symbol.iterator, {
 // let t3 = test.next();
 // console.log(t3);
 
-
-for (const item of obj) {
-  console.log(item);
-}
+//for of 调用
+// for (const item of obj) {
+//   console.log(item);
+// }

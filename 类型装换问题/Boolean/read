@@ -1,0 +1,24 @@
+Boolean类型转换：
+    1.对于String:只有非空字符串为真
+    2.对于Number:除了0和NaN之外都为真
+    3.对于Boolean:true为真
+    4.对于Object:除了null之外都为真
+    5.undefined为false;\
+一些特别的装换
+!!String("")   // 返回true
+!!Boolean("")  // 返回false
+!!Number("")   // 返回true
+ 
+!!Boolean([])   // 返回true
+!!String([])    // 返回false
+!!Number([])    //false
+ 
+!!String(0)   // 返回true  #被转为字符串"0"
+!!Number(0)      // 返回false
+!!Boolean(0)   // 返回false
+ 
+[] 转为字符串是 ""       // String([]) 返回""
+[] 转为数字是 0            // Number([]) 返回0
+[] 转为布尔值是 true        // Boolean([]) 返回true
+true 转为数字是 1       // Number(true) 返回1
+false 转为数字是 0      // Number(false) 返回0    
